@@ -79,29 +79,6 @@ export interface ActivityItem {
   tag: string;
 }
 
-export const ACTIVITIES: ActivityItem[] = [
-  {
-    icon: 'sunrise', title: 'Doa Pagi Bersama',
-    desc: 'Memulai hari dengan ucapan syukur dan doa singkat bersama via grup Namaposo.',
-    day: 1, start: 5 * 60 + 30, end: 6 * 60, place: 'Online (Grup WA)', tag: 'Doa',
-  },
-  {
-    icon: 'book-open', title: 'Persekutuan & Firman',
-    desc: 'Membaca Alkitab, berbagi pemahaman, dan saling menguatkan dalam Namaposo GKPS Bekasi.',
-    day: 2, start: 19 * 60 + 30, end: 21 * 60, place: 'GKPS Bekasi / Rumah Anggota', tag: 'Firman',
-  },
-  {
-    icon: 'home', title: 'Kunjungan Anggota',
-    desc: 'Mengunjungi anggota Namaposo yang membutuhkan penguatan, sakit, atau bersyukur.',
-    day: 4, start: 16 * 60, end: 17 * 60 + 30, place: 'Sesuai jadwal kunjungan', tag: 'Persekutuan',
-  },
-  {
-    icon: 'heart-handshake', title: 'Kerja Bakti & Gotong Royong',
-    desc: 'Gotong royong membersihkan area gereja dan balai persekutuan.',
-    day: 6, start: 7 * 60, end: 9 * 60, place: 'GKPS Bekasi', tag: 'Pelayanan',
-  },
-];
-
 // ------------------------------------------------------------
 //  AGENDA KHUSUS
 // ------------------------------------------------------------
@@ -127,9 +104,9 @@ export function getSpecialEvents(): SpecialEvent[] {
     {
       title: 'Bazar Namaposo',
       desc: 'Bazar persekutuan Namaposo GKPS Bekasi.',
-      date: nextWeekday(0, 8),
-      time: '08:00 – 12:00 WIB',
-      place: 'Halaman GKPS Bekasi',
+      date: addDays(startOfDay(new Date()), 30),
+      time: 'COMING SOON',
+      place: 'Pendopo GKPS Bekasi',
       accent: 'terra',
     },
     {
@@ -155,8 +132,11 @@ export interface Member {
 }
 
 export const MEMBERS: Member[] = [
-  { name: 'Pdt. GKPS Bekasi', role: 'Pelindung — Pendeta Pemuda', note: 'Mendampingi dan menopang rohani seluruh Namaposo GKPS Bekasi.', tier: 'naungan' },
-  { name: 'Pengurus Namaposo', role: 'Ketua', note: 'Mengoordinasikan seluruh program dan kegiatan Namaposo.', tier: 'inti' },
+  { name: 'Pdt. Aleks Frank D. Sitopu', role: 'Pendeta Resort GKPS Jemaat', note: 'Mendampingi dan menopang rohani seluruh Namaposo GKPS Bekasi.', tier: 'naungan' },
+  { name: 'Feliks Gerald Purba', role: 'Ketua Namaposo', note: 'Mengoordinasikan seluruh program dan kegiatan Namaposo.', tier: 'inti' },
+  { name: 'Roni Zendrato', role: 'Wakil Ketua Namaposo', note: 'Mengoordinasikan seluruh program dan kegiatan Namaposo.', tier: 'inti' },
+  { name: 'Monica Simamora', role: 'Sekretaris Namaposo', note: 'Mengoordinasikan seluruh program dan kegiatan Namaposo.', tier: 'inti' },
+  { name: 'Ardon Yemiko Purba', role: 'Wakil Sekretaris Namaposo', note: 'Mengoordinasikan seluruh program dan kegiatan Namaposo.', tier: 'inti' },
 ];
 
 // ------------------------------------------------------------
@@ -178,28 +158,3 @@ export function getBirthdays(): Birthday[] {
     mk(0, 'Anggota Namaposo', 'Anggota'),
   ];
 }
-
-// ------------------------------------------------------------
-//  TOKO NAMAPOSO (Dikosongkan sementara)
-// ------------------------------------------------------------
-
-export interface Product {
-  name: string;
-  category: 'Makanan' | 'Minuman' | 'Kerajinan';
-  desc: string;
-  price: number;
-  unit: string;
-  img: string;
-  badge?: string;
-}
-
-export const PRODUCTS: Product[] = [];
-
-export const WA_NUMBER = '6281234567890';
-
-export function waLink(message: string): string {
-  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
-}
-
-export const fmtIDR = (n: number): string =>
-  'Rp ' + n.toLocaleString('id-ID');
