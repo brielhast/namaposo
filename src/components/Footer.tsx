@@ -14,10 +14,10 @@ const NAV = [
 ];
 
 const SCHEDULE = [
-  { d: 'Minggu', t: 'Kebaktian 07:00 & 09:30 WITA' },
-  { d: 'Rabu', t: 'Persekutuan Doa 19:00 WITA' },
-  { d: 'Jumat', t: 'Ibadah Puasa & Doa 18:00 WITA' },
-  { d: 'Sabtu', t: 'Latihan Pujian 16:00 WITA' },
+  { d: 'Minggu', t: 'Kebaktian 07:00 & 10:00 WIB' },
+  { d: 'Rabu', t: 'Partonggoan Namaposo 19:00 WIB' },
+  { d: 'Jumat', t: 'Ibadah Puasa & Doa 18:00 WIB' },
+  { d: 'Sabtu', t: 'Latihan Pujian 16:00 WIB' },
 ];
 
 export default function Footer() {
@@ -60,7 +60,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-cream/60">
-              Persekutuan keluarga jemaat GPIB Imanuel Gorontalo — bertumbuh, bersekutu, dan melayani
+              Persekutuan keluarga jemaat GKPS BEKASI — bertumbuh, bersekutu, dan melayani
               bersama dalam kasih Kristus.
             </p>
             <div className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-cream/15 bg-cream/5 px-4 py-2.5">
@@ -150,7 +150,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-cream/10 pt-7 text-[11px] font-semibold uppercase tracking-[0.2em] text-cream/40 sm:flex-row">
-          <p>© {year} Namaposo Emanuel — GPIB Imanuel Gorontalo</p>
+          <p>© {year} Namaposo Emanuel — GKPS BEKASI</p>
           <p className="flex items-center gap-2">
             Soli Deo Gloria
             <span className="h-1 w-1 rounded-full bg-gold" />

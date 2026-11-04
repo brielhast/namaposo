@@ -64,12 +64,12 @@ export default function Hero() {
   if (live.length > 0) {
     nextLabel = 'Sedang Berlangsung';
     nextValue = live[0].title;
-    nextSub = `Di ${live[0].place} · hingga ${fmtTime(live[0].end)} WITA`;
+    nextSub = `Di ${live[0].place} · hingga ${fmtTime(live[0].end)} WIB`;
   } else if (next) {
     const startAt = new Date(next.date);
     startAt.setMinutes(next.start);
     nextValue = next.title;
-    nextSub = `${fmtCountdownShort(startAt.getTime() - now.getTime())} lagi · ${fmtTime(next.start)} WITA · ${next.place}`;
+    nextSub = `${fmtCountdownShort(startAt.getTime() - now.getTime())} lagi · ${fmtTime(next.start)} WIB · ${next.place}`;
   }
 
   return (
@@ -167,7 +167,7 @@ export default function Hero() {
                   <Cross size={32} />
                 </span>
                 <h3 className="mt-6 font-display text-2xl font-medium tracking-wide text-cream">
-                  GPIB Imanuel Gorontalo
+                  GKPS BEKASI
                 </h3>
                 <p className="mt-2 text-xs uppercase tracking-widest text-gold">
                   Persekutuan Namaposo
@@ -183,10 +183,10 @@ export default function Hero() {
                     Kebaktian Minggu
                   </p>
                   <p className="mt-0.5 text-sm font-semibold text-cream">
-                    07:00 &amp; 09:30 WITA
+                    07:00 &amp; 10:00 WIB
                   </p>
                   <p className="text-xs text-cream/70">
-                    Gereja Imanuel Gorontalo
+                    GKPS BEKASI
                   </p>
                 </div>
               </div>

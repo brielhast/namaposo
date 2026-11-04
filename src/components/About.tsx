@@ -40,7 +40,7 @@ export default function About() {
           eyebrow="Informasi Namaposo"
           title="Keluarga kecil dengan"
           italic="kasih yang besar"
-          desc="Namaposo Emanuel adalah persekutuan keluarga jemaat GPIB Imanuel Gorontalo. Dalam bahasa Gorontalo, “namaposo” berarti persekutuan keluarga — dan itulah identitas kami."
+          desc="Namaposo Emanuel adalah persekutuan keluarga jemaat GKPS BEKASI. Dalam bahasa Gorontalo, “namaposo” berarti persekutuan keluarga — dan itulah identitas kami."
         />
 
         {/* Kartu Statistik */}

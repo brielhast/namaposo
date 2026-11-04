@@ -1,5 +1,5 @@
 // ============================================================
-//  Data Konten Website Namaposo Emanuel
+//  Data Konten Website Namaposo GKPS Bekasi
 //  (Bisa disesuaikan langsung oleh pengurus namaposo)
 // ============================================================
 
@@ -59,11 +59,10 @@ export interface WorshipItem {
 }
 
 export const WORSHIP_SCHEDULE: WorshipItem[] = [
-  { title: 'Kebaktian Minggu I', day: 0, start: 7 * 60, end: 8 * 60 + 30, place: 'Gereja Imanuel', note: 'Sekolah Minggu berlangsung bersamaan' },
-  { title: 'Kebaktian Minggu II', day: 0, start: 9 * 60 + 30, end: 11 * 60, place: 'Gereja Imanuel', note: 'Dilandasi musik organ & paduan suara' },
-  { title: 'Persekutuan Doa Namaposo', day: 3, start: 19 * 60, end: 20 * 60 + 30, place: 'Rumah anggota (rotasi)', note: 'Dipimpin bergantian oleh keluarga namaposo' },
-  { title: 'Ibadah Puasa & Doa', day: 5, start: 18 * 60, end: 19 * 60 + 30, place: 'Gereja Imanuel', note: 'Puasa bersama seluruh jemaat' },
-  { title: 'Latihan Pujian & Penyembahan', day: 6, start: 16 * 60, end: 17 * 60 + 30, place: 'Ruang Musik Gereja', note: 'Terbuka bagi pemula — sarapan rohani dulu ya!' },
+  { title: 'Kebaktian Minggu I', day: 0, start: 7 * 60, end: 8 * 60 + 30, place: 'GKPS BEKASI', note: 'Sekolah Minggu berlangsung bersamaan' },
+  { title: 'Kebaktian Minggu II', day: 0, start: 10 * 60, end: 11 * 60, place: 'GKPS BEKASI', note: 'Sekolah Minggu berlangsung bersamaan' },
+  { title: 'Partonggoan Namaposo', day: 3, start: 19 * 60, end: 20 * 60 + 30, place: 'Rumah anggota (rotasi)', note: 'Dipimpin bergantian oleh keluarga Namaposo' },
+
 ];
 
 // ------------------------------------------------------------
@@ -142,7 +141,7 @@ export function getSpecialEvents(): SpecialEvent[] {
       title: 'Kebaktian Pengucapan Syukur',
       desc: 'Keluarga Bpk. Frits Mandagi mengucap syukur atas 25 tahun pernikahan. Seluruh namaposo diundang hadir.',
       date: nextWeekday(6, 4),
-      time: '18:30 WITA',
+      time: '18:30 WIB',
       place: 'Kediaman Kel. Mandagi',
       accent: 'gold',
     },
@@ -150,15 +149,15 @@ export function getSpecialEvents(): SpecialEvent[] {
       title: 'Pasarkan Namaposo',
       desc: 'Bazar hasil karya anggota: makanan, kerajinan, dan kue kering. Hasil penjualan untuk pelayanan diakonia.',
       date: nextWeekday(0, 8),
-      time: '08:00 – 12:00 WITA',
-      place: 'Halaman Gereja Imanuel',
+      time: '08:00 – 12:00 WIB',
+      place: 'Halaman GKPS BEKASI',
       accent: 'terra',
     },
     {
       title: 'Pelatihan Pelayanan Anak',
       desc: 'Workshop kreatif mengajar sekolah minggu bersama kakak-kakak pendidik dari sinode.',
       date: nextWeekday(6, 12),
-      time: '09:00 – 14:00 WITA',
+      time: '09:00 – 14:00 WIB',
       place: 'Ruang Anak Gereja',
       accent: 'forest',
     },
@@ -166,7 +165,7 @@ export function getSpecialEvents(): SpecialEvent[] {
       title: 'Perayaan Ulang Tahun Bulanan',
       desc: 'Merayakan anggota yang berulang tahun bulan ini — kue, pujian, dan doa berkat bersama.',
       date: addDays(startOfDay(new Date()), 18),
-      time: '19:00 WITA',
+      time: '19:00 WIB',
       place: 'Balai Namaposo',
       accent: 'terra',
     },

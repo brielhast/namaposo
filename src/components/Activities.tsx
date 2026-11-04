@@ -69,7 +69,7 @@ function Banner({ now }: { now: Date }) {
           <span className="inline-flex items-center gap-2">
             <Hourglass size={15} className="text-gold" />
             {fmtCountdownShort(Math.max(0, endAt.getTime() - now.getTime()))} lagi · hingga{' '}
-            {fmtTime(l.end)} WITA
+            {fmtTime(l.end)} WIB
           </span>
         </div>
         {live.length > 1 && (
@@ -100,7 +100,7 @@ function Banner({ now }: { now: Date }) {
             <MapPin size={15} className="text-forest" /> {next.place}
           </span>
           <span className="inline-flex items-center gap-2">
-            <Radio size={15} className="text-forest" /> {fmtTime(next.start)} WITA
+            <Radio size={15} className="text-forest" /> {fmtTime(next.start)} WIB
           </span>
         </div>
         <div className="mt-6 flex max-w-md items-center gap-2">
@@ -182,7 +182,7 @@ export default function Activities() {
                   <p className="mt-2 flex-1 text-[13px] leading-relaxed text-ink-soft">{a.desc}</p>
                   <div className="mt-5 border-t border-ink/8 pt-4 text-xs font-semibold text-ink-soft">
                     <p>
-                      Setiap {HARI[a.day]} · {fmtTime(a.start)}–{fmtTime(a.end)} WITA
+                      Setiap {HARI[a.day]} · {fmtTime(a.start)}–{fmtTime(a.end)} WIB
                     </p>
                     <p className="mt-1 flex items-center gap-1.5 text-ink-soft/80">
                       <MapPin size={12} className="shrink-0 text-gold-deep" />

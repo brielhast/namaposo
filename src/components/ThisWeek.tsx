@@ -103,7 +103,7 @@ export default function ThisWeek() {
               </div>
 
               <p className="mt-8 text-[10px] font-bold uppercase tracking-[0.22em] text-cream/50">
-                Menuju Kebaktian Minggu I · 07:00 WITA
+                Menuju Kebaktian Minggu I · 07:00 WIB
               </p>
               <div className="mt-3 grid grid-cols-4 gap-2">
                 <CountdownBox v={cd.d} l="Hari" />
@@ -170,7 +170,7 @@ export default function ThisWeek() {
                     Jadwal Ibadah Mingguan
                   </p>
                   <span className="rounded-full bg-forest/8 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-forest">
-                    Setiap pekan · WITA
+                    Setiap pekan · WIB
                   </span>
                 </div>
 
@@ -200,7 +200,7 @@ export default function ThisWeek() {
                             {st === 'live' && <LiveBadge />}
                           </div>
                           <p className="mt-0.5 text-xs font-medium text-ink-soft">
-                            {fmtTime(w.start)}–{fmtTime(w.end)} WITA · {w.place}
+                            {fmtTime(w.start)}–{fmtTime(w.end)} WIB · {w.place}
                           </p>
                           <p className="mt-0.5 text-[11px] italic text-ink-soft/70">{w.note}</p>
                         </div>
@@ -210,8 +210,7 @@ export default function ThisWeek() {
                 </div>
 
                 <p className="mt-4 rounded-xl bg-cream/80 p-3.5 text-[11px] leading-relaxed text-ink-soft">
-                  Kebaktian Minggu berlangsung di <strong className="text-ink">Gereja Imanuel</strong>, Jl.
-                  Diponegoro No. 7, Gorontalo. Persekutuan Rabu berputar di rumah anggota — cek grup
+                  Kebaktian Minggu berlangsung di <strong className="text-ink">GKPS BEKASI</strong>. Partonggoan Namaposo berputar di rumah anggota — cek grup
                   namaposo untuk lokasi pekan ini.
                 </p>
               </div>
