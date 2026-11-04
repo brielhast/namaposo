@@ -59,10 +59,9 @@ export interface WorshipItem {
 }
 
 export const WORSHIP_SCHEDULE: WorshipItem[] = [
-  { title: 'Kebaktian Minggu I', day: 0, start: 7 * 60, end: 8 * 60 + 30, place: 'GKPS BEKASI', note: 'Sekolah Minggu berlangsung bersamaan' },
-  { title: 'Kebaktian Minggu II', day: 0, start: 10 * 60, end: 11 * 60, place: 'GKPS BEKASI', note: 'Sekolah Minggu berlangsung bersamaan' },
-  { title: 'Partonggoan Namaposo', day: 3, start: 19 * 60, end: 20 * 60 + 30, place: 'Rumah anggota (rotasi)', note: 'Dipimpin bergantian oleh keluarga Namaposo' },
-
+  { title: 'Kebaktian Minggu I', day: 0, start: 7 * 60, end: 8 * 60 + 30, place: 'GKPS Bekasi', note: 'Sekolah Minggu berlangsung bersamaan' },
+  { title: 'Kebaktian Minggu II', day: 0, start: 10 * 60, end: 11 * 60 + 30, place: 'GKPS Bekasi', note: 'Sekolah Minggu berlangsung bersamaan' },
+  { title: 'Partonggoan Namaposo', day: 3, start: 19 * 60, end: 20 * 60 + 30, place: 'Rumah anggota (rotasi)', note: 'Dipimpin bergantian oleh anggota Namaposo' },
 ];
 
 // ------------------------------------------------------------
@@ -70,7 +69,7 @@ export const WORSHIP_SCHEDULE: WorshipItem[] = [
 // ------------------------------------------------------------
 
 export interface ActivityItem {
-  icon: string; // nama ikon lucide — di-mapping di komponen
+  icon: string;
   title: string;
   desc: string;
   day: number;
@@ -83,39 +82,28 @@ export interface ActivityItem {
 export const ACTIVITIES: ActivityItem[] = [
   {
     icon: 'sunrise', title: 'Doa Pagi Bersama',
-    desc: 'Memulai hari dengan ucapan syukur dan doa singkat bersama via grup namaposo.',
+    desc: 'Memulai hari dengan ucapan syukur dan doa singkat bersama via grup Namaposo.',
     day: 1, start: 5 * 60 + 30, end: 6 * 60, place: 'Online (Grup WA)', tag: 'Doa',
   },
   {
     icon: 'book-open', title: 'Persekutuan & Firman',
-    desc: 'Membaca Alkitab, berbagi pemahaman, dan saling menguatkan dalam keluarga besar namaposo.',
-    day: 2, start: 19 * 60 + 30, end: 21 * 60, place: 'Rumah ibu Yulie', tag: 'Firman',
+    desc: 'Membaca Alkitab, berbagi pemahaman, dan saling menguatkan dalam Namaposo GKPS Bekasi.',
+    day: 2, start: 19 * 60 + 30, end: 21 * 60, place: 'GKPS Bekasi / Rumah Anggota', tag: 'Firman',
   },
   {
-    icon: 'home', title: 'Kunjungan Keluarga',
-    desc: 'Mengunjungi keluarga anggota yang sakit, baru pindah, atau baru dikaruniai buah hati.',
+    icon: 'home', title: 'Kunjungan Anggota',
+    desc: 'Mengunjungi anggota Namaposo yang membutuhkan penguatan, sakit, atau bersyukur.',
     day: 4, start: 16 * 60, end: 17 * 60 + 30, place: 'Sesuai jadwal kunjungan', tag: 'Persekutuan',
   },
   {
-    icon: 'users', title: 'Persekutuan Ibu-ibu & Arisan',
-    desc: 'Berbagi resep, kerajinan tangan, dan arisan kasih sambil makin erat bersaudara.',
-    day: 6, start: 10 * 60, end: 12 * 60, place: 'Balai namaposo', tag: 'Persekutuan',
-  },
-  {
-    icon: 'heart-handshake', title: 'Rempug — Kerja Bakti',
-    desc: 'Gotong royong membersihkan balai dan lingkungan sekitar, dilanjutkan sarapan bersama.',
-    day: 6, start: 7 * 60, end: 9 * 60, place: 'Balai namaposo', tag: 'Pelayanan',
-  },
-  {
-    icon: 'sprout', title: 'Pelayanan Anak & Remaja',
-    desc: 'Mengajar sekolah minggu, bermain, dan menanam iman sejak dini bagi anak-anak namaposo.',
-    day: 0, start: 9 * 60 + 30, end: 11 * 60, place: 'Ruang Anak Gereja', tag: 'Pelayanan',
+    icon: 'heart-handshake', title: 'Kerja Bakti & Gotong Royong',
+    desc: 'Gotong royong membersihkan area gereja dan balai persekutuan.',
+    day: 6, start: 7 * 60, end: 9 * 60, place: 'GKPS Bekasi', tag: 'Pelayanan',
   },
 ];
 
 // ------------------------------------------------------------
-//  AGENDA KHUSUS (dihitung relatif terhadap hari ini
-//  sehingga selalu tampil sebagai acara yang akan datang)
+//  AGENDA KHUSUS
 // ------------------------------------------------------------
 
 export interface SpecialEvent {
@@ -127,7 +115,6 @@ export interface SpecialEvent {
   accent: string;
 }
 
-/** Minggu berikutnya jatuh pada hari tertentu (0=Minggu) dari hari ini */
 function nextWeekday(target: number, minDaysAhead: number): Date {
   const today = startOfDay(new Date());
   let d = addDays(today, minDaysAhead);
@@ -138,42 +125,26 @@ function nextWeekday(target: number, minDaysAhead: number): Date {
 export function getSpecialEvents(): SpecialEvent[] {
   return [
     {
-      title: 'Kebaktian Pengucapan Syukur',
-      desc: 'Keluarga Bpk. Frits Mandagi mengucap syukur atas 25 tahun pernikahan. Seluruh namaposo diundang hadir.',
-      date: nextWeekday(6, 4),
-      time: '18:30 WIB',
-      place: 'Kediaman Kel. Mandagi',
-      accent: 'gold',
-    },
-    {
-      title: 'Pasarkan Namaposo',
-      desc: 'Bazar hasil karya anggota: makanan, kerajinan, dan kue kering. Hasil penjualan untuk pelayanan diakonia.',
+      title: 'Bazar Namaposo',
+      desc: 'Bazar persekutuan Namaposo GKPS Bekasi.',
       date: nextWeekday(0, 8),
       time: '08:00 – 12:00 WIB',
-      place: 'Halaman GKPS BEKASI',
+      place: 'Halaman GKPS Bekasi',
       accent: 'terra',
     },
     {
-      title: 'Pelatihan Pelayanan Anak',
-      desc: 'Workshop kreatif mengajar sekolah minggu bersama kakak-kakak pendidik dari sinode.',
-      date: nextWeekday(6, 12),
-      time: '09:00 – 14:00 WIB',
-      place: 'Ruang Anak Gereja',
-      accent: 'forest',
-    },
-    {
-      title: 'Perayaan Ulang Tahun Bulanan',
-      desc: 'Merayakan anggota yang berulang tahun bulan ini — kue, pujian, dan doa berkat bersama.',
-      date: addDays(startOfDay(new Date()), 18),
-      time: '19:00 WIB',
-      place: 'Balai Namaposo',
-      accent: 'terra',
+      title: 'Natal Namaposo Resort Bekasi',
+      desc: 'Perayaan Natal Namaposo GKPS Resort Bekasi — Coming Soon!',
+      date: addDays(startOfDay(new Date()), 30),
+      time: 'Coming Soon',
+      place: 'GKPS Bekasi',
+      accent: 'gold',
     },
   ];
 }
 
 // ------------------------------------------------------------
-//  STRUKTUR ORGANISASI — 20 ORANG
+//  STRUKTUR ORGANISASI
 // ------------------------------------------------------------
 
 export interface Member {
@@ -184,33 +155,12 @@ export interface Member {
 }
 
 export const MEMBERS: Member[] = [
-  { name: 'Pdt. Yohanes Bumbulan, M.Div', role: 'Pelindung — Gembala Sidang', note: 'Mendampingi dan menopang rohani seluruh keluarga namaposo.', tier: 'naungan' },
-  { name: 'Bpk. Alfrets Kaunang', role: 'Penasihat', note: 'Penasihat senior dengan pengalaman pelayanan puluhan tahun.', tier: 'naungan' },
-
-  { name: 'Bpk. Frits Mandagi', role: 'Ketua', note: 'Mengoordinasikan seluruh program dan kegiatan namaposo.', tier: 'inti' },
-  { name: 'Ibu Rina Runtuwene', role: 'Wakil Ketua', note: 'Mendampingi ketua dan memastikan program berjalan merata.', tier: 'inti' },
-  { name: 'Sdri. Grace Wowor', role: 'Sekretaris', note: 'Mencatat notula, surat-menyurat, dan arsip namaposo.', tier: 'inti' },
-  { name: 'Sdr. Joshua Sondakh', role: 'Wakil Sekretaris', note: 'Membantu administrasi dan dokumentasi kegiatan.', tier: 'inti' },
-  { name: 'Ibu Meylan Tumbelaka', role: 'Bendahara', note: 'Mengelola kas namaposo dengan transparan dan akuntabel.', tier: 'inti' },
-  { name: 'Bpk. Roy Lengkong', role: 'Wakil Bendahara', note: 'Mendampingi bendahara dan mengarsipkan laporan keuangan.', tier: 'inti' },
-
-  { name: 'Sdr. Kevin Tilaar', role: 'Koord. Ibadah & Musik', note: '', tier: 'bidang' },
-  { name: 'Ibu Shintia Rawung', role: 'Koord. Pelayanan Anak', note: '', tier: 'bidang' },
-  { name: 'Sdr. Daniel Waworuntu', role: 'Koord. Media & Dokumentasi', note: '', tier: 'bidang' },
-  { name: 'Bpk. Jack Tuwaidan', role: 'Koord. Diakonia & Sosial', note: '', tier: 'bidang' },
-  { name: 'Sdr. Andrey Kalesan', role: 'Koord. Pemuda & Remaja', note: '', tier: 'bidang' },
-  { name: 'Ibu Novi Supit', role: 'Koord. Doa & Kunjungan', note: '', tier: 'bidang' },
-  { name: 'Ibu Yulie Rattu', role: 'Koord. Persekutuan Ibu-ibu', note: '', tier: 'bidang' },
-  { name: 'Bpk. Hendrik Rondonuwu', role: 'Koord. Persekutuan Bapak-bapak', note: '', tier: 'bidang' },
-  { name: 'Ibu Fenny Mangindaan', role: 'Koord. Konsumsi', note: '', tier: 'bidang' },
-  { name: 'Sdr. Calvin Kamagi', role: 'Anggota — Tim Musik', note: '', tier: 'bidang' },
-  { name: 'Ibu Debby Siahaya', role: 'Anggota — Tim Pujian', note: '', tier: 'bidang' },
-  { name: 'Bpk. Yos Mokuagow', role: 'Anggota — Humas & Keamanan', note: '', tier: 'bidang' },
+  { name: 'Pdt. GKPS Bekasi', role: 'Pelindung — Pendeta Pemuda', note: 'Mendampingi dan menopang rohani seluruh Namaposo GKPS Bekasi.', tier: 'naungan' },
+  { name: 'Pengurus Namaposo', role: 'Ketua', note: 'Mengoordinasikan seluruh program dan kegiatan Namaposo.', tier: 'inti' },
 ];
 
 // ------------------------------------------------------------
 //  ULANG TAHUN ANGGOTA
-//  (tanggal relatif terhadap hari ini agar selalu relevan)
 // ------------------------------------------------------------
 
 export interface Birthday {
@@ -225,19 +175,12 @@ export function getBirthdays(): Birthday[] {
     name, role, date: addDays(today, offset),
   });
   return [
-    mk(0, 'Ibu Meylan Tumbelaka', 'Bendahara'),
-    mk(2, 'Sdr. Kevin Tilaar', 'Koord. Ibadah & Musik'),
-    mk(5, 'Ibu Novi Supit', 'Koord. Doa & Kunjungan'),
-    mk(9, 'Sdr. Calvin Kamagi', 'Tim Musik'),
-    mk(14, 'Bpk. Alfrets Kaunang', 'Penasihat'),
-    mk(20, 'Sdri. Grace Wowor', 'Sekretaris'),
-    mk(26, 'Bpk. Yos Mokuagow', 'Humas & Keamanan'),
-    mk(33, 'Ibu Debby Siahaya', 'Tim Pujian'),
+    mk(0, 'Anggota Namaposo', 'Anggota'),
   ];
 }
 
 // ------------------------------------------------------------
-//  TOKO NAMAPOSO
+//  TOKO NAMAPOSO (Dikosongkan sementara)
 // ------------------------------------------------------------
 
 export interface Product {
@@ -250,67 +193,7 @@ export interface Product {
   badge?: string;
 }
 
-export const PRODUCTS: Product[] = [
-  {
-    name: 'Sambal Roa Otanaha',
-    category: 'Makanan',
-    desc: 'Sambal ikan roa asap khas Gorontalo, pedas gurih yang bikin nagih.',
-    price: 35000, unit: 'botol 200 ml',
-    img: 'https://images.pexels.com/photos/39204250/pexels-photo-39204250.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    badge: 'Terlaris',
-  },
-  {
-    name: 'Dodol Gorontalo Kelapa',
-    category: 'Makanan',
-    desc: 'Dodol legit olahan kelapa asli, dimasak perlahan di dapur keluarga kami.',
-    price: 45000, unit: 'kotak 500 gr',
-    img: 'https://images.pexels.com/photos/39470925/pexels-photo-39470925.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  },
-  {
-    name: 'Ikan Roa Asap Premium',
-    category: 'Makanan',
-    desc: 'Ikan roa diasap tradisional, kering, gurih, siap digoreng atau disambal.',
-    price: 60000, unit: 'pack 5 ekor',
-    img: 'https://images.pexels.com/photos/37179934/pexels-photo-37179934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  },
-  {
-    name: 'Kue Kering Nastar Nanas',
-    category: 'Makanan',
-    desc: 'Nastar selai nanas asli, lumer di mulut, dipanggang tiap pesanan.',
-    price: 75000, unit: 'toples 500 gr',
-    img: 'https://images.pexels.com/photos/28965344/pexels-photo-28965344.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    badge: 'Baru',
-  },
-  {
-    name: 'Kopi Robusta Pinogoran',
-    category: 'Minuman',
-    desc: 'Biji kopi robusta dataran tinggi Gorontalo, roasted medium, aroma kuat.',
-    price: 85000, unit: 'pack 250 gr',
-    img: 'https://images.pexels.com/photos/14848712/pexels-photo-14848712.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  },
-  {
-    name: 'Madu Hutan Otonaha',
-    category: 'Minuman',
-    desc: 'Madu hutan murni tanpa campuran, dipanen lestari oleh keluarga petani madu.',
-    price: 110000, unit: 'botol 500 ml',
-    img: 'https://images.pexels.com/photos/7990484/pexels-photo-7990484.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    badge: 'Terbatas',
-  },
-  {
-    name: 'Tas Anyaman Pandan',
-    category: 'Kerajinan',
-    desc: 'Tas pandan anyaman tangan ibu-ibu namaposo, kuat dan cantik untuk harian.',
-    price: 150000, unit: 'pcs',
-    img: 'https://images.pexels.com/photos/26692148/pexels-photo-26692148.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  },
-  {
-    name: 'Kain Tenun Gorontalo',
-    category: 'Kerajinan',
-    desc: 'Tenun tangan motif Gorontalo, cocok untuk busana perayaan dan oleh-oleh.',
-    price: 220000, unit: 'lembar 2 m',
-    img: 'https://images.pexels.com/photos/24738158/pexels-photo-24738158.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  },
-];
+export const PRODUCTS: Product[] = [];
 
 export const WA_NUMBER = '6281234567890';
 
